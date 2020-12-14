@@ -1,5 +1,3 @@
-package Tetris;
-
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
