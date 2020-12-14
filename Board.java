@@ -86,7 +86,7 @@ public class Board extends JPanel implements KeyListener, MouseListener, MouseMo
 
 	public Board() {
 		// load Assets
-		blocks = ImageLoader.loadImage("/titles.png");
+		blocks = ImageLoader.loadImage("/tiles.png");
 
 		background = ImageLoader.loadImage("/Universe.png");
 		pause = ImageLoader.loadImage("/Pause.png");
