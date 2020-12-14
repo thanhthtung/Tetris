@@ -34,11 +34,17 @@ public class Board extends JPanel implements KeyListener{
 	
 	public Board(){
 		
-		try {
-			blocks = ImageIO.read(Board.class.getResource("/tiles.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		blocks = ImageLoader.loadImage("/tiles.png");
+		
+		background = ImageLoader.loadImage("/Universe.png");
+		pause = ImageLoader.loadImage("/pause.png");
+		refresh = ImageLoader.loadImage("/button.png");
+		
+		music = ImageLoader.LoadSound("/music.wav");
+		
+		
+		
+		music.loop(Clip.LOOP_CONTINUOUSLY);
 		
 		timer = new Timer(delay, new ActionListener(){
 
