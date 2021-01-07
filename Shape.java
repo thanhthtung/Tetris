@@ -81,8 +81,8 @@ public class Shape {
 
 			for (int row = 0; row < coords.length; row++) {
 				for (int col = 0; col < coords[row].length; col++) {
-					if (coords[row][col] != 0) {
-						if (board.getBoard()[y + 1 + row][x + col] != 0) {
+					if (!(coords[row][col] == 0) {
+						if (!(board.getBoard()[y + 1 + row][x + col] == 0) {
 							collision = true;
 						}
 					}
@@ -102,14 +102,14 @@ public class Shape {
 	public void render(Graphics g) {
 		for (int row = 0; row < coords.length; row++) {
 			for (int col = 0; col < coords[0].length; col++) {
-				if (coords[row][col] != 0) {
+				if (!(coords[row][col] == 0) {
 					g.drawImage(block, col * 30 + x * 30, row * 30 + y * 30, null);
 				}
 			}
 		}
 		for (int row = 0; row < reference.length; row++) {
 			for (int col = 0; col < reference[0].length; col++) {
-				if (reference[row][col] != 0) {
+				if (!(reference[row][col] == 0) {
 					g.drawImage(block, col * 30 + 320, row * 30 + 160, null);
 				}
 			}
@@ -121,7 +121,7 @@ public class Shape {
 		for (int i = board.getBoard().length - 1; i > 0; i--) {
 			int count = 0;
 			for (int j = 0; j < board.getBoard()[0].length; j++) {
-				if (board.getBoard()[i][j] != 0)
+				if (!(board.getBoard()[i][j] == 0)
 					count++;
 				board.getBoard()[size][j] = board.getBoard()[i][j];
 			}
@@ -141,14 +141,14 @@ public class Shape {
 
 		rotatedShape = reverseRows(rotatedShape);
 
-		if (!(x + rotatedShape[0].length <= 10) || !(y + rotatedShape.length <= 20)) {
+		if ((x + rotatedShape[0].length > 10) || !(y + rotatedShape.length > 20)) {
 			return;
 		}
 
 		for (int row = 0; row < rotatedShape.length; row++) {
 			for (int col = 0; col < rotatedShape[row].length; col++) {
-				if (rotatedShape[row][col] != 0) {
-					if (board.getBoard()[y + row][x + col] != 0) {
+				if (!(rotatedShape[row][col] == 0) {
+					if (!(board.getBoard()[y + row][x + col] == 0) {
 						return;
 					}
 				}
