@@ -50,7 +50,7 @@ public class Shape {
 		if (collision) {
 			for (int row = 0; row < coords.length; row++) {
 				for (int col = 0; col < coords[0].length; col++) {
-					if (coords[row][col] != 0)
+					if (!(coords[row][col] == 0))
 						board.getBoard()[y + row][x + col] = color;
 				}
 			}
@@ -59,7 +59,7 @@ public class Shape {
 			board.setCurrentShape();
 		}
 
-		if ((x + deltaX + coords[0].length <= 10) && (x + deltaX >= 0)) {
+		if (!(x + deltaX + coords[0].length > 10) && !(x + deltaX < 0)) {
 
 			for (int row = 0; row < coords.length; row++) {
 				for (int col = 0; col < coords[row].length; col++) {
@@ -77,7 +77,7 @@ public class Shape {
 
 		}
 
-		if ((y + 1 + coords.length <= 20)) {
+		if (!(y + 1 + coords.length > 20)) {
 
 			for (int row = 0; row < coords.length; row++) {
 				for (int col = 0; col < coords[row].length; col++) {
