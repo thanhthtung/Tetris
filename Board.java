@@ -155,7 +155,7 @@ public class Board extends JPanel implements KeyListener, MouseListener, MouseMo
 		for (int row = 0; row < board.length; row++) {
 			for (int col = 0; col < board[row].length; col++) {
 
-				if (board[row][col] != 0) {
+				if (!(board[row][col] == 0)) {
 
 					g.drawImage(blocks.getSubimage((board[row][col] - 1) * blockSize, 0, blockSize, blockSize),
 							col * blockSize, row * blockSize, null);
@@ -165,7 +165,7 @@ public class Board extends JPanel implements KeyListener, MouseListener, MouseMo
 		}
 		for (int row = 0; row < nextShape.getCoords().length; row++) {
 			for (int col = 0; col < nextShape.getCoords()[0].length; col++) {
-				if (nextShape.getCoords()[row][col] != 0) {
+				if (!(nextShape.getCoords()[row][col] == 0)) {
 					g.drawImage(nextShape.getBlock(), col * 30 + 320, row * 30 + 50, null);
 				}
 			}
@@ -229,8 +229,8 @@ public class Board extends JPanel implements KeyListener, MouseListener, MouseMo
 
 		for (int row = 0; row < currentShape.getCoords().length; row++) {
 			for (int col = 0; col < currentShape.getCoords()[0].length; col++) {
-				if (currentShape.getCoords()[row][col] != 0) {
-					if (board[currentShape.getY() + row][currentShape.getX() + col] != 0)
+				if (!(currentShape.getCoords()[row][col] == 0)) {
+					if (!(board[currentShape.getY() + row][currentShape.getX() + col] == 0))
 						gameOver = true;
 				}
 			}
@@ -252,17 +252,6 @@ public class Board extends JPanel implements KeyListener, MouseListener, MouseMo
 			currentShape.setDeltaX(-1);
 		if (e.getKeyCode() == KeyEvent.VK_DOWN)
 			currentShape.speedUp();
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_DOWN)
-			currentShape.speedDown();
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-
 	}
 
 	public void startGame() {
@@ -292,6 +281,17 @@ public class Board extends JPanel implements KeyListener, MouseListener, MouseMo
 			update();
 			repaint();
 		}
+
+	}
+	
+	@Override
+	public void keyReleased(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_DOWN)
+			currentShape.speedDown();
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
 
 	}
 
