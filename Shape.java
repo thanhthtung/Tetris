@@ -59,7 +59,7 @@ public class Shape {
 			board.setCurrentShape();
 		}
 
-		if (!(x + deltaX + coords[0].length > 10) && !(x + deltaX < 0)) {
+		if ((x + deltaX + coords[0].length <= 10) && (x + deltaX >= 0)) {
 
 			for (int row = 0; row < coords.length; row++) {
 				for (int col = 0; col < coords[row].length; col++) {
@@ -77,12 +77,11 @@ public class Shape {
 
 		}
 
-		if (!(y + 1 + coords.length > 20)) {
+		if ((y + 1 + coords.length <= 20)) {
 
 			for (int row = 0; row < coords.length; row++) {
 				for (int col = 0; col < coords[row].length; col++) {
 					if (coords[row][col] != 0) {
-
 						if (board.getBoard()[y + 1 + row][x + col] != 0) {
 							collision = true;
 						}
@@ -93,15 +92,14 @@ public class Shape {
 				y++;
 				time = 0;
 			}
-		} else {
+		} 
+		else {
 			collision = true;
 		}
-
 		deltaX = 0;
 	}
 
 	public void render(Graphics g) {
-
 		for (int row = 0; row < coords.length; row++) {
 			for (int col = 0; col < coords[0].length; col++) {
 				if (coords[row][col] != 0) {
@@ -109,28 +107,22 @@ public class Shape {
 				}
 			}
 		}
-
 		for (int row = 0; row < reference.length; row++) {
 			for (int col = 0; col < reference[0].length; col++) {
 				if (reference[row][col] != 0) {
 					g.drawImage(block, col * 30 + 320, row * 30 + 160, null);
 				}
-
 			}
-
 		}
-
 	}
-
+	
 	private void checkLine() {
 		int size = board.getBoard().length - 1;
-
 		for (int i = board.getBoard().length - 1; i > 0; i--) {
 			int count = 0;
 			for (int j = 0; j < board.getBoard()[0].length; j++) {
 				if (board.getBoard()[i][j] != 0)
 					count++;
-
 				board.getBoard()[size][j] = board.getBoard()[i][j];
 			}
 			if (count < board.getBoard()[0].length)
@@ -149,7 +141,7 @@ public class Shape {
 
 		rotatedShape = reverseRows(rotatedShape);
 
-		if ((x + rotatedShape[0].length > 10) || (y + rotatedShape.length > 20)) {
+		if (!(x + rotatedShape[0].length <= 10) || !(y + rotatedShape.length <= 20)) {
 			return;
 		}
 
